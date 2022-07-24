@@ -7,7 +7,7 @@ _To reproduce results, use either the **notebook** or the **Docker container** l
 
 
 ## Google colab notebook
-[Reproducible results of SimMIM](https://colab.research.google.com/github/taskswithcode/taming-transformers/blob/master/TWCSimMim.ipynb)  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/taskswithcode/taming-transformers/blob/master/TWCTamingTransformer.ipynb) 
+[Reproducible results of SimMIM](https://colab.research.google.com/github/taskswithcode/SimMIM/blob/master/TWCSimMim.ipynb)  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/taskswithcode/taming-transformers/blob/master/TWCTamingTransformer.ipynb) 
 
 **Limitations**:
 
