@@ -1,3 +1,20 @@
+# Fork to reproduce results of Taming transformers 
+
+_This fork addresses the problem of Github repos (including their notebooks) breaking over time  due to updates on the dependent packages. This problem is circumvented by taking the environment snapshot of a working version_
+
+_To reproduce results, use either the **notebook** or the **Docker container** links below. The notebook downloads a working environment snapshot (using conda-pack), including all required models. The docker version is essentially the same environment packaged in a container._
+
+
+
+## Google colab notebook
+[Reproducible results of taming transformers](https://colab.research.google.com/github/taskswithcode/taming-transformers/blob/master/TWCTamingTransformer.ipynb)  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/taskswithcode/taming-transformers/blob/master/TWCTamingTransformer.ipynb) 
+
+**Limitations**:
+
+_1. Conda-pack was performed on Ubuntu 20.04.4 LTS. The target OS needs to be the same for the notebook to work. This limitation is not there for the docker container even though conda-pack is used in its creation, given the container abstraction wrapped around it_
+
+_2. Reproducibility is achieved by using conda-packed enviromment which needs to be run prior to execution of any code in the repository. This imposes a level of indirection in interactive coding in the notebook. Edits to python code needs to be made in a python file. The notebook cell merely serves as a command line interface to execute the python file or function._
+
 # SimMIM
 
 By [Zhenda Xie](https://zdaxie.github.io)\*, [Zheng Zhang](https://stupidzz.github.io/)\*, [Yue Cao](http://yue-cao.me)\*, [Yutong Lin](https://github.com/impiga), [Jianmin Bao](https://jianminbao.github.io/), [Zhuliang Yao](https://github.com/Howal), [Qi Dai](https://www.microsoft.com/en-us/research/people/qid/) and [Han Hu](https://ancientmooner.github.io/)\*.
