@@ -1,4 +1,4 @@
-# Fork to reproduce results of Taming transformers 
+# Fork to reproduce results of SiMIM 
 
 _This fork addresses the problem of Github repos (including their notebooks) breaking over time  due to updates on the dependent packages. This problem is circumvented by taking the environment snapshot of a working version_
 
