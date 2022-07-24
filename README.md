@@ -12,8 +12,8 @@ _Can be used for classification of images without labeled data. This is a self-s
 _To reproduce results, use either the **notebook** or the **Docker container** links below. The notebook downloads a working environment snapshot (using conda-pack), including all required models. The docker version is essentially the same environment packaged in a container._
 
 2. This fork makes the following additions  to the original
-    
-        a) Option to perform prediction on a single image input file
+
+Option to perform prediction on a single image input file [demo in notebook(https://colab.research.google.com/github/taskswithcode/SimMIM/blob/master/TWCSimMim.ipynb) 
 
 
 ## Google colab notebook
