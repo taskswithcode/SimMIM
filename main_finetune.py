@@ -78,7 +78,10 @@ def parse_option():
 
 
 def main(config):
-    dataset_train, dataset_val, data_loader_train, data_loader_val, mixup_fn = build_loader(config, logger, is_pretrain=False)
+    if (config.SINGLE_IMAGE_FILE == ''):
+        dataset_train, dataset_val, data_loader_train, data_loader_val, mixup_fn = build_loader(config, logger, is_pretrain=False)
+    else:
+        dataset_train, dataset_val, data_loader_train, data_loader_val, mixup_fn = None,None,None,None,None
 
     logger.info(f"Creating model:{config.MODEL.TYPE}/{config.MODEL.NAME}")
     model = build_model(config, is_pretrain=False)
@@ -97,7 +100,10 @@ def main(config):
         flops = model_without_ddp.flops()
         logger.info(f"number of GFLOPs: {flops / 1e9}")
 
-    lr_scheduler = build_scheduler(config, optimizer, len(data_loader_train))
+    if (config.SINGLE_IMAGE_FILE == ''):
+        lr_scheduler = build_scheduler(config, optimizer, len(data_loader_train))
+    else:
+        lr_scheduler = None
 
     if config.AUG.MIXUP > 0.:
         # smoothing is handled with mixup label transform
@@ -123,7 +129,7 @@ def main(config):
 
     if config.MODEL.RESUME:
         max_accuracy = load_checkpoint(config, model_without_ddp, optimizer, lr_scheduler, logger)
-        if (config.SINGLE_IMAGE_FILE):
+        if (config.SINGLE_IMAGE_FILE != ''):
             single_image_test(model, config)
             return
         acc1, acc5, loss = validate(config, data_loader_val, model)

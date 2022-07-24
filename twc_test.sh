@@ -10,11 +10,11 @@ function run_model()
     then
         echo "Running model Swin large"
         python -m torch.distributed.launch --nproc_per_node 1 main_finetune.py \
---eval --test_single $inp_file  --batch-size 1 --cfg configs/swin_large__800ep/simmim_finetune__swin_large__img224_window14__800ep.yaml --resume twc_models/simmim_finetune__swin_large__img224_window14__800ep.pth --data-path /home/acc/final_save/datasets/imagenet1k/ILSVRC/Data/CLS-LOC/ft
+--eval --test_single $inp_file  --batch-size 1 --cfg configs/swin_large__800ep/simmim_finetune__swin_large__img224_window14__800ep.yaml --resume twc_models/simmim_finetune__swin_large__img224_window14__800ep.pth 
     else
         echo "Running model VIT base"
         python -m torch.distributed.launch --nproc_per_node 1 main_finetune.py \
---eval --test_single $inp_file --batch-size 1 --cfg configs/vit_base__800ep/simmim_finetune__vit_base__img224__800ep.yaml --resume twc_models/simmim_finetune__vit_base__img224__800ep.pth --data-path /home/acc/final_save/datasets/imagenet1k/ILSVRC/Data/CLS-LOC/ft
+--eval --test_single $inp_file --batch-size 1 --cfg configs/vit_base__800ep/simmim_finetune__vit_base__img224__800ep.yaml --resume twc_models/simmim_finetune__vit_base__img224__800ep.pth 
     fi
 
 }
