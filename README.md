@@ -2,7 +2,7 @@
 
 ### What task does this model solve?
 
-_Can be used for classification of images without labeled data (self-supervised model). It was ranked 3 in [paperwithcode as of July 2022](https://paperswithcode.com/sota/self-supervised-image-classification-on-1)  on imagenet1k task_
+_Can be used for classification of images without labeled data (self-supervised model) for pretraining. It was ranked 3 in [paperwithcode as of July 2022](https://paperswithcode.com/sota/self-supervised-image-classification-on-1)  on imagenet1k task with fine-tuning of the self-supervised model_
 
 
 ### What is unique about this fork?
