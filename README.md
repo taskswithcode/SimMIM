@@ -1,11 +1,19 @@
 # Fork to reproduce results of SimMIM 
 
-_This fork addresses the problem of Github repos (including their notebooks) breaking over time  due to updates on the dependent packages. This problem is circumvented by taking the environment snapshot of a working version_
+### What task does this model solve?
+
+_Can be used for classification of images without labeled data. This is a self-supervised model. It was ranked 3 in [paperwithcode as of July 2022](https://paperswithcode.com/sota/self-supervised-image-classification-on-1)  on imagenet1k task_
+
+
+### What is unique about this fork?
+
+1. _This fork addresses the problem of Github repos (including their notebooks) breaking over time  due to updates on the dependent packages. This problem is circumvented by taking the environment snapshot of a working version_
 
 _To reproduce results, use either the **notebook** or the **Docker container** links below. The notebook downloads a working environment snapshot (using conda-pack), including all required models. The docker version is essentially the same environment packaged in a container._
 
-## Additions to the original
-1) Option to perform prediction on a single image input file
+2. This fork makes the following additions  to the original
+    
+        a) Option to perform prediction on a single image input file
 
 
 ## Google colab notebook
