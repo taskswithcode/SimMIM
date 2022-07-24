@@ -1,9 +1,11 @@
-# Fork to reproduce results of SiMIM 
+# Fork to reproduce results of SimMIM 
 
 _This fork addresses the problem of Github repos (including their notebooks) breaking over time  due to updates on the dependent packages. This problem is circumvented by taking the environment snapshot of a working version_
 
 _To reproduce results, use either the **notebook** or the **Docker container** links below. The notebook downloads a working environment snapshot (using conda-pack), including all required models. The docker version is essentially the same environment packaged in a container._
 
+## Additions to the original
+1) Option to perform prediction on a single image input file
 
 
 ## Google colab notebook
