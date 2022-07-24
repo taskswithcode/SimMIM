@@ -189,6 +189,8 @@ _C.EVAL_MODE = False
 _C.THROUGHPUT_MODE = False
 # local rank for DistributedDataParallel, given by command line argument
 _C.LOCAL_RANK = 0
+# SINGLE_IMAGE test
+_C.SINGLE_IMAGE_FILE = ''
 
 # [SimMIM] path to pre-trained model
 _C.PRETRAINED = ''
@@ -244,6 +246,8 @@ def update_config(config, args):
         config.EVAL_MODE = True
     if _check_args('throughput'):
         config.THROUGHPUT_MODE = True
+    if _check_args('test_single'):
+        config.SINGLE_IMAGE_FILE = args.test_single
 
     # set local rank for distributed training
     config.LOCAL_RANK = args.local_rank

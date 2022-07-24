@@ -11,6 +11,7 @@ import time
 import argparse
 import datetime
 import numpy as np
+import pdb
 
 import torch
 import torch.backends.cudnn as cudnn
@@ -26,6 +27,11 @@ from lr_scheduler import build_scheduler
 from optimizer import build_optimizer
 from logger import create_logger
 from utils import load_checkpoint, load_pretrained, save_checkpoint, get_grad_norm, auto_resume_helper, reduce_tensor
+import torchvision.transforms as transforms
+from timm.data.constants import IMAGENET_DEFAULT_MEAN, IMAGENET_DEFAULT_STD
+from PIL import Image
+import PIL
+import imagenet_class_code_to_names as img_map
 
 try:
     # noinspection PyUnresolvedReferences
@@ -52,13 +58,14 @@ def parse_option():
     parser.add_argument('--accumulation-steps', type=int, help="gradient accumulation steps")
     parser.add_argument('--use-checkpoint', action='store_true',
                         help="whether to use gradient checkpointing to save memory")
-    parser.add_argument('--amp-opt-level', type=str, default='O1', choices=['O0', 'O1', 'O2'],
+    parser.add_argument('--amp-opt-level', type=str, default='O0', choices=['O0', 'O1', 'O2'],
                         help='mixed precision opt level, if O0, no amp is used')
     parser.add_argument('--output', default='output', type=str, metavar='PATH',
                         help='root of output folder, the full path is <output>/<model_name>/<tag> (default: output)')
     parser.add_argument('--tag', help='tag of experiment')
     parser.add_argument('--eval', action='store_true', help='Perform evaluation only')
     parser.add_argument('--throughput', action='store_true', help='Test throughput only')
+    parser.add_argument('--test_single', type=str, help='Test single image only')
 
     # distributed training
     parser.add_argument("--local_rank", type=int, required=True, help='local rank for DistributedDataParallel')
@@ -116,6 +123,9 @@ def main(config):
 
     if config.MODEL.RESUME:
         max_accuracy = load_checkpoint(config, model_without_ddp, optimizer, lr_scheduler, logger)
+        if (config.SINGLE_IMAGE_FILE):
+            single_image_test(model, config)
+            return
         acc1, acc5, loss = validate(config, data_loader_val, model)
         logger.info(f"Accuracy of the network on the {len(dataset_val)} test images: {acc1:.1f}%")
         if config.EVAL_MODE:
@@ -126,6 +136,8 @@ def main(config):
     if config.THROUGHPUT_MODE:
         throughput(data_loader_val, model, logger)
         return
+
+
 
     logger.info("Start training")
     start_time = time.time()
@@ -295,6 +307,41 @@ def throughput(data_loader, model, logger):
         logger.info(f"batch_size {batch_size} throughput {30 * batch_size / (tic2 - tic1)}")
         return
 
+@torch.no_grad()
+def single_image_test(model, config):
+    model.eval()
+    orig_size = config.DATA.IMG_SIZE
+    file_name = config.SINGLE_IMAGE_FILE
+    print("Input file:",file_name)
+    size = int((256 / 224) * orig_size)
+    trans = transforms.Compose([
+        transforms.Resize((size)),
+        transforms.CenterCrop(orig_size),
+        transforms.ToTensor(),
+        transforms.Normalize(IMAGENET_DEFAULT_MEAN, IMAGENET_DEFAULT_STD)
+      ])
+    #trans2 = transforms.Compose([
+    #    transforms.Resize((size)),
+    #    transforms.CenterCrop(orig_size),
+    #])
+    img = PIL.Image.open(file_name).convert("RGB")
+    #d_img = trans2(img)
+    #d_img.save("test.jpg")
+    img = trans(img)
+    
+    img = torch.unsqueeze(img,0)
+    pred = model(img).cpu()
+    top_1 = np.argmax(pred).tolist()
+    arr = pred.detach()[0].numpy()
+    topk = 5
+    ind = np.argpartition(arr, -topk)[-topk:]
+    topk_results = ind[np.argsort(arr[ind])][::-1].tolist()
+    print(ind)
+    print("top-1 = ",img_map.imagenet_map[int(top_1)])
+    print("top-" + str(topk))
+    for i in range(len(topk_results)):
+        print(img_map.imagenet_map[topk_results[i]])
+    return
 
 if __name__ == '__main__':
     _, config = parse_option()
