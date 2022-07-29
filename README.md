@@ -17,7 +17,7 @@ _Can be used for classification of images without labeled data (self-supervised 
 
 
 ## Google colab notebook
-[Reproducible results of SimMIM](https://colab.research.google.com/github/taskswithcode/SimMIM/blob/master/TWCSimMim.ipynb)  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/taskswithcode/taming-transformers/blob/master/TWCSimMim.ipynb) 
+[Reproducible results of SimMIM](https://colab.research.google.com/github/taskswithcode/SimMIM/blob/master/TWCSimMim.ipynb)  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/taskswithcode/SimMIM/blob/master/TWCSimMim.ipynb) 
 
 **Limitations**:
 
