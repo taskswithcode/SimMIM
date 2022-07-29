@@ -2,7 +2,7 @@
 <br/>
 <p align="center">
   <a href="SimmMain.png">
-    <img src="taming2.png" alt="SimmMain.png">
+    <img src="SimmMain.png" alt="SimmMain">
   </a>
 </p>
 
