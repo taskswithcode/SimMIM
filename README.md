@@ -1,3 +1,87 @@
+<br/>
+<br/>
+<p align="center">
+  <a href="taming2.png">
+    <img src="taming2.png" alt="SimMIM">
+  </a>
+</p>
+<p align="center">
+  <a href="taming_main.png">
+    <img src="taming_main.png" alt="SimMIM">
+  </a>
+</p>
+<p align="center">
+  <a href="taming3.png">
+    <img src="taming3.png" alt="SimMIM">
+  </a>
+</p>
+
+<h3 align="center">Taming Transformers - image reconstruction from codebook</h3>
+<h5 align="center"><i>Images above illustrate reconstruction capabilities of different models after transforming input image to a codebook</i></h5>
+<br/>
+<br/>
+
+### What can I use this model for?
+_Can be used for classification of images without labeled data (self-supervised model) for pretraining. It was ranked 3 in [paperwithcode as of July 2022](https://paperswithcode.com/sota/self-supervised-image-classification-on-1)  on imagenet1k task with fine-tuning of the self-supervised model_
+
+### Table of contents
+
+- [Original repo](#simmim)
+- [FAQ](#faq)
+- [Google Colab link](https://colab.research.google.com/github/taskswithcode/SimMIM/blob/master/TWCSimMim.ipynb)  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/taskswithcode/SimMIM/blob/master/TWCSimMim.ipynb)
+- [Docker Link](https://hub.docker.com/r/twc2022/taming_transformers_cpu)
+
+
+
+### FAQ
+
+
+
+
+**1. What is unique about this fork?**
+
+1. _This fork addresses the problem of Github repos (including their notebooks) breaking over time  due to updates on the dependent packages. This problem is circumvented by taking the environment snapshot of a working version_
+
+    _To reproduce results, use either the **notebook** or the **Docker container** links below. The notebook downloads a working environment snapshot (using conda-pack), including all required models. The docker version is essentially the same environment packaged in a container._
+
+2. _This fork makes the following additions  to the original_
+
+    _Option to perform prediction on a single image input file [demo in notebook](https://colab.research.google.com/github/taskswithcode/SimMIM/blob/master/TWCSimMim.ipynb)_
+
+
+**2. Why reproduce and freeze an existing result?** 
+
+_Reproduction and freezing addresses the problem of Github repos (including their notebooks) breaking over time  due to updates on the dependent packages. This problem is circumvented by taking the environment snapshot of a working version_
+
+_The notebook downloads a working environment snapshot (made using conda-pack), including all required models. The docker version is essentially the same environment packaged in a container._
+
+**3. What are the limitations?**
+
+
+  _1. Conda-pack was performed on Ubuntu 20.04.4 LTS. The target OS needs to be the same for the notebook to work. This limitation is not there for the docker container even though conda-pack is used in its creation, given the container abstraction wrapped around it_
+
+  _2. Reproducibility is achieved by using conda-packed enviromment which needs to be run prior to execution of any code in the repository. This imposes a level of indirection in interactive coding in the notebook. Edits to python code needs to be made in a python file. The notebook cell merely serves as a command line interface to execute the python file or function._
+
+**4. How do I use the docker image?**
+
+
+  _To download the container_
+
+  ```
+  docker pull twc2022/taming_transformers_cpu
+  ```
+
+  _Command line interaction with the repository once the image is pulled_
+
+  ```
+  docker run -it --rm --entrypoint=/bin/bash twc2022/taming_transformers_cpu:1.0
+  ```
+
+  [![dockeri.co](https://dockeri.co/image/twc2022/taming_transformers_cpu)](https://hub.docker.com/r/twc2022/taming_transformers_cpu)
+
+
+
+
 # Fork to reproduce results of SimMIM 
 
 ### What task does this model solve?
