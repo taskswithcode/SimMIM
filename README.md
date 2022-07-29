@@ -1,20 +1,11 @@
 <br/>
 <br/>
 <p align="center">
-  <a href="taming2.png">
-    <img src="taming2.png" alt="SimMIM">
+  <a href="SimmMain.png">
+    <img src="taming2.png" alt="SimmMain.png">
   </a>
 </p>
-<p align="center">
-  <a href="taming_main.png">
-    <img src="taming_main.png" alt="SimMIM">
-  </a>
-</p>
-<p align="center">
-  <a href="taming3.png">
-    <img src="taming3.png" alt="SimMIM">
-  </a>
-</p>
+
 
 <h3 align="center">Taming Transformers - image reconstruction from codebook</h3>
 <h5 align="center"><i>Images above illustrate reconstruction capabilities of different models after transforming input image to a codebook</i></h5>
