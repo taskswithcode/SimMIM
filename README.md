@@ -7,8 +7,8 @@
 </p>
 
 
-<h3 align="center">Taming Transformers - image reconstruction from codebook</h3>
-<h5 align="center"><i>Images above illustrate reconstruction capabilities of different models after transforming input image to a codebook</i></h5>
+<h3 align="center"SimMIM - fine tuned models predictions</h3>
+<h5 align="center"><i>Images are the prediction output of two models Vit-Base and Swin-Large</i></h5>
 <br/>
 <br/>
 
@@ -20,24 +20,16 @@ _Can be used for classification of images without labeled data (self-supervised 
 - [Original repo](#simmim)
 - [FAQ](#faq)
 - [Google Colab link](https://colab.research.google.com/github/taskswithcode/SimMIM/blob/master/TWCSimMim.ipynb)  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/taskswithcode/SimMIM/blob/master/TWCSimMim.ipynb)
-- [Docker Link](https://hub.docker.com/r/twc2022/taming_transformers_cpu)
+- [Docker Link - TBD](https://hub.docker.com/r/twc2022/taming_transformers_cpu)
 
 
 
 ### FAQ
 
 
-
-
 **1. What is unique about this fork?**
 
-1. _This fork addresses the problem of Github repos (including their notebooks) breaking over time  due to updates on the dependent packages. This problem is circumvented by taking the environment snapshot of a working version_
-
-    _To reproduce results, use either the **notebook** or the **Docker container** links below. The notebook downloads a working environment snapshot (using conda-pack), including all required models. The docker version is essentially the same environment packaged in a container._
-
-2. _This fork makes the following additions  to the original_
-
-    _Option to perform prediction on a single image input file [demo in notebook](https://colab.research.google.com/github/taskswithcode/SimMIM/blob/master/TWCSimMim.ipynb)_
+ _This fork makes the following additions  to the original - option to perform prediction on a single image input file [demo in notebook](https://colab.research.google.com/github/taskswithcode/SimMIM/blob/master/TWCSimMim.ipynb)_
 
 
 **2. Why reproduce and freeze an existing result?** 
@@ -72,33 +64,6 @@ _The notebook downloads a working environment snapshot (made using conda-pack), 
 
 
 
-
-# Fork to reproduce results of SimMIM 
-
-### What task does this model solve?
-
-_Can be used for classification of images without labeled data (self-supervised model) for pretraining. It was ranked 3 in [paperwithcode as of July 2022](https://paperswithcode.com/sota/self-supervised-image-classification-on-1)  on imagenet1k task with fine-tuning of the self-supervised model_
-
-
-### What is unique about this fork?
-
-1. _This fork addresses the problem of Github repos (including their notebooks) breaking over time  due to updates on the dependent packages. This problem is circumvented by taking the environment snapshot of a working version_
-
-    _To reproduce results, use either the **notebook** or the **Docker container** links below. The notebook downloads a working environment snapshot (using conda-pack), including all required models. The docker version is essentially the same environment packaged in a container._
-
-2. _This fork makes the following additions  to the original_
-
-    _Option to perform prediction on a single image input file [demo in notebook](https://colab.research.google.com/github/taskswithcode/SimMIM/blob/master/TWCSimMim.ipynb)_
-
-
-## Google colab notebook
-[Reproducible results of SimMIM](https://colab.research.google.com/github/taskswithcode/SimMIM/blob/master/TWCSimMim.ipynb)  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/taskswithcode/SimMIM/blob/master/TWCSimMim.ipynb) 
-
-**Limitations**:
-
-_1. Conda-pack was performed on Ubuntu 20.04.4 LTS. The target OS needs to be the same for the notebook to work. This limitation is not there for the docker container even though conda-pack is used in its creation, given the container abstraction wrapped around it_
-
-_2. Reproducibility is achieved by using conda-packed enviromment which needs to be run prior to execution of any code in the repository. This imposes a level of indirection in interactive coding in the notebook. Edits to python code needs to be made in a python file. The notebook cell merely serves as a command line interface to execute the python file or function._
 
 # SimMIM
 
