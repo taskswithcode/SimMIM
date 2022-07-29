@@ -1,8 +1,8 @@
 <br/>
 <br/>
 <p align="center">
-  <a href="SimmMain.png">
-    <img src="SimmMain.png" alt="SimmMain">
+  <a href="SwimmMain.png">
+    <img src="SwimmMain.png" alt="SimmMain">
   </a>
 </p>
 
